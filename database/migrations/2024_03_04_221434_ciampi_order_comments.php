@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('user_id');
-            $table->string('comment');
+            $table->text('comment');
             $table->string('type');
             $table->string('status');
             $table->string('attachment');
