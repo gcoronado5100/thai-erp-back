@@ -23,17 +23,17 @@ return new class extends Migration
             $table->unsignedBigInteger('folio_status_id'); // tipo de Folio => cotizacion, nota de venta o cancelada
             $table->unsignedBigInteger('folio_cotizacion_id')->nullable(); // Generado antes de proceder a guardar la orden
             $table->unsignedBigInteger('folio_nota_venta_id')->nullable();
-            $table->unsignedBigInteger('delivery_status_id')->nullable();  // Estado de almacen (por despachar o entregado)
+            // $table->unsignedBigInteger('delivery_status_id')->nullable();  // Estado de almacen (por despachar o entregado)
             $table->boolean('pdv_approval')->default(false); // Aprobacion del gerente de PDV
             $table->boolean('assitant_approval')->default(false); // Aprobado por assitencia de direccion
             $table->boolean('manager_approval')->default(false); // Aprobado por subdirector
             $table->boolean('ceo_approval')->default(false); // Aprobado por director general
-            $table->float('subtotal_productos');
-            $table->float('subtotal_promos')->nullable();
+            $table->decimal('subtotal_productos', 12, 2);
+            $table->decimal('subtotal_promos', 12, 2)->nullable();
             $table->json('detalle_anticipo')->nullable();
             $table->json('detalles_pago');
-            $table->string('observaciones')->nullable();
-            $table->float('total');
+            $table->longText('observaciones')->nullable();
+            $table->decimal('total', 12, 2);
 
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('edited_by')->references('id')->on('users');
@@ -42,7 +42,7 @@ return new class extends Migration
             $table->foreign('folio_cotizacion_id')->references('id')->on('ciampi_quotes');
             $table->foreign('folio_nota_venta_id')->references('id')->on('ciampi_sales');
             $table->foreign('folio_status_id')->references('id')->on('folio_status');
-            $table->foreign('delivery_status_id')->references('id')->on('delivery_status');
+            // $table->foreign('delivery_status_id')->references('id')->on('delivery_status');
         });
     }
 

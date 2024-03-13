@@ -24,5 +24,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([
     'prefix' => 'auth'
 ], function () {
+    // Users and Auth
     Route::post('login', [AuthController::class, 'login']);
+
+    // Clients
+
+    // Quotes
+
+    // Sales
+
+    // Support
+
+    // Services
+
+    // Inventory
+
+    // Reports
+
+    // Settings
+
+    // Managements
 });

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ciampi_order_comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('user_id');
             $table->text('comment');
             $table->string('type');
             $table->string('status');
@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('attachment_path');
             $table->string('attachment_url');
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('ciampi_orders');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
