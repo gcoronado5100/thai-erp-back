@@ -21,6 +21,15 @@ return new class extends Migration
             $table->integer('qty')->default(0);
             $table->float('unit_price');
             $table->text('attachment');
+            $table->text('notes');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('edited_by')->nullable();
+
+
+            $table->foreign('warehouse_id')->references('id')->on('warehouses');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('edited_by')->references('id')->on('users');
         });
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->string('type');
-            $table->float('charge');
+            $table->decimal('charge', 9, 2);
             $table->timestamps();
         });
     }
